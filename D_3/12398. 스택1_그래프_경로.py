@@ -1,31 +1,32 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 
-def DFS(S, V):             #S시작점 = 1, V= 노드 갯수 6개
-    visited = [0] * (V+1)   #방문한 정점을 1로 표시 [0, 0, 0, 0, 0, 0, 0]   #왜 +1을 할까?????????????????
-    stack = []              #빈 스택을 만들어 줬어
-    visited[S] = 1          #다녀간 적 있으면 1로 바꿔
-    vv = S                  #vv에다가 시작점을 넣어
-    while True:
-        for w in adjL[vv]:         #vv에 인접하고
-            if visited[w] == 0:   #방문안한 w가 있다면
-                stack.append(vv)  #현재 노드를 넣고
-                vv = w            #w를 이제 볼거다
-                visited[w] = 1    #그러고 방문했으니까 1로 만들어줘
-                break             #이제 다시 반복을 할거다.
-        else:                     #주변에 방문하지 않은 노드들이 없어서 break가 걸리지 않은 경우
-            if stack:             #이전으로 돌아가 if top > -1 그니까 top에 뭐가 있는거지
-                vv = stack.pop()   #top에 있는걸 꺼내
-            else:                 #갈 곳이 없다
-                break             #while True
-
-T = int(input())
+T = int(input()) #3
 
 for test_case in range(1, T+1):
-    V, E = map(int, input().split())   # V = 노드 갯수 6개, E = 간선 갯수 5개
-    adjL = [[]for _ in range(V+1)]
-    arr = [list(map(int, input().split())) for _ in range(E)]
-    S, G = map(int, input().split())   # S = 노드 시작점 1, G = 찾아갈 곳 6
-    # for i in range(E):
+    V, E = map(int, input().split())  # V=노드의 갯수 6개, E=간선의 갯수 5개
+    G = [[] for _ in range(V+1)]   #빈 리스트를 만들고   ???????????
 
-    DFS(S, G)
+    for _ in range(E):
+        u, v = map(int, input().split())  # u=시작점 v =방문하지않음
+        G[u].append(v)    #시작점이랑 연결된거를 리스트로 정리를 해
+
+    v, goal = map(int, input().split())   #v는 시작점, goal은 찾아야하는거  ????????????
+
+    S = []          #빈 스택을 만들구
+    visited = [0] * (V + 1)  #방문했는지 확인해야하니까 빈 리스트 만들어
+    visited[v] = 1  #방문하지 않은게 곧 시작 정점이 될거니까 방문한 거는 1을 만들어 ????????
+
+    while True:
+        for w in G[v]:            #방문하지 않은 것들 중에     ??????????
+            if not visited[w]:    #??????
+                S.append(v)       #스택에다가 넣고
+                visited[w] = 1    #얘는 방문할거니까 1을 만들어
+                v = w             #w를 v다가 넣고
+                break
+        else:                      #브레이크가 안걸리고 계속 갔어
+            if not S:  #S리스트 안ㅇㅔ 아무것도 없다.
+                break
+            v = S.pop()
+
+    print(f'#{test_case} {visited[goal]}')
