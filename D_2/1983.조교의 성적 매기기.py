@@ -22,16 +22,22 @@ for test_case in range(1, T+1):
 
     # print(sum_score) #[75, 93, 89, 100, 72, 86, 96, 69, 85, 86]
 
-    # sum_score 정렬하기
+    # sum_score 내림차순으로 정렬하기
     for i in range(len(sum_score)-1, 0, -1):   # i = 9, 8, 7, 6, 5, 4, 3, 2, 1
         for j in range(i):                     # j = 0 1 2 3 4 5 6 7 8
-            if sum_score[j] > sum_score[j + 1]:
+            if sum_score[j] < sum_score[j + 1]:
                 sum_score[j], sum_score[j + 1] = sum_score[j + 1], sum_score[j]
 
-    # print(sum_score)  #[69, 72, 75, 85, 86, 86, 89, 93, 96, 100]
+    # print(sum_score)  #[99.45, 96.25, 92.54999999999998, 88.8, 85.85000000000001, 85.75, 85.5, 74.6, 72.35, 68.95]
+
+    #학점 리스트
+    s_list = ['A+', 'A0', 'A-', 'B+', 'B0', 'B-', 'C+', 'C0', 'C-', 'D0']
 
     #k번째 학생 인덱스 구하기
-    #오또케,,,,?
+    for i in range(0, len(sum_score), len(sum_score) // 10):  #i ~ 0부터 학생 수 만큼
+        i = s_list[i]
+        print(i)
+
 
 
 
