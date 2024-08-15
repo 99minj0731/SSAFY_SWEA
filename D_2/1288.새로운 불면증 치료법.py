@@ -25,24 +25,24 @@ for test_case in range(1, T+1):
 
 
 
-''' # 교수님 풀이법
-# while => 반복횟수는 알 수 없지만, 종료 조건은 안다.
-# 초기값 N으로부터 2N, 3N, 4N .......
-T = int(input())
-for tc in range(1, T + 1):
-    N = int(input())
-    val = 0
-    num_set = set()
-    # 0 ~ 9가 모두 나왔다면 반복 종료
-    while len(num_set) < 10:
-        val += N  # 생성되는 양의 번호
-        # val에서 각 자리값을 추출해서
-        # 이미 나온 숫자인 아닌지 계산 => 여러가지 방법이 가능
-        for num in str(val):
-            num_set.add(num)
-
-    print(f'#{tc} {val}')
-'''
+# ''' # 교수님 풀이법
+# # while => 반복횟수는 알 수 없지만, 종료 조건은 안다.
+# # 초기값 N으로부터 2N, 3N, 4N .......
+# T = int(input())
+# for tc in range(1, T + 1):
+#     N = int(input())
+#     val = 0
+#     num_set = set()
+#     # 0 ~ 9가 모두 나왔다면 반복 종료
+#     while len(num_set) < 10:
+#         val += N  # 생성되는 양의 번호
+#         # val에서 각 자리값을 추출해서
+#         # 이미 나온 숫자인 아닌지 계산 => 여러가지 방법이 가능
+#         for num in str(val):
+#             num_set.add(num)
+#
+#     print(f'#{tc} {val}')
+# '''
 
 
 
