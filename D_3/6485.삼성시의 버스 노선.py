@@ -29,3 +29,32 @@ for test_case in range(1, T+1):
         print(f'{bus_station_list[bus_index[k]]}', end=' ')
     print() # 다음 테스트 케이스가 나오면 줄 바꿈을 해줘야한다.
 
+
+'''
+T = int(input()) #1
+
+for test_case in range(1, T + 1):
+
+    bus_cnt = int(input())  #2
+    bus_stop = [0] * 5001   #0번째 자리는 비워둠
+
+    for _ in range(bus_cnt):
+        start, end = map(int, input().split())  # 1, 3
+
+        # 해당 정류장 위치에 들리면 += 1
+        for stop_by in range(start, end + 1):  # 1, 2, 3
+            bus_stop[stop_by] += 1
+
+    P = int(input()) # 5, 찾을 정류장의 갯수
+
+    print(f'#{test_case}', end=' ')
+
+    #해당 정류장에 버스가 얼마나 다니는지 탐색
+    for _ in range(P):
+        bus_stop_num = int(input()) # 1, 2, 3, 4, 5
+        result = bus_stop[bus_stop_num]
+        print(result, end = ' ')
+
+    print()
+'''
+
