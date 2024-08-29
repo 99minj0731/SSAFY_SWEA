@@ -12,14 +12,14 @@ def burger(k, sum_taste, sum_kcal): # 0 0 1000
         return
 
     if k == N:
-        # 최대 칼로리랑 현재 누적 칼로리 비교
-        if max_taste < sum_kcal:
-            max_taste = sum_kcal
-        return
+        if sum_taste > max_taste:
+            max_taste = sum_taste
+            return
 
     # 최대 칼로리에 도달하지 못했다면
-    burger(k + 1, sum_taste + food[k][0], sum_kcal + food[k][1])
-    burger(k + 1, sum_taste, sum_kcal)
+    else:
+        burger(k + 1, sum_taste + food[k][0], sum_kcal + food[k][1])
+        burger(k + 1, sum_taste, sum_kcal)
 
 
 
@@ -46,7 +46,7 @@ for test_case in range(1, T + 1):
 
     burger(0, 0, 0)
 
-    print(f'#{test_case} {max_taste}')
+print(f'#{test_case} {max_taste}')
 
 '''
 food 리스트에서 각 요소의 1번째 자리에 위치한 것들을 부분집합으로 만들고
