@@ -1,24 +1,26 @@
 import sys
 sys.stdin = open('input.txt')
 
-def burger(k, n, sum_kcal, max_cal):
-    global max_taste
+def burger(k, sum_taste, sum_kcal): # 0 0 1000
+    global max_taste  # 비교값
 
-    while sum_kcal < max_kcal:
-        # 현재까지 더한 값이 최대 칼로리를 넘겼다면
-        if sum_kcal > max_kcal:
-            return
+    # # 최대 칼로리가 넘지 않을 때까지만 반복
+    # while sum_kcal < kcal:
 
-        # 최대 칼로리와 동일하다면
-        if sum_kcal == max_kcal:
-            max_taste += food[n][0]
-            sum_kcal += food[n][1]
-            return
+    # 현재까지 더한 값이 최대 칼로리를 넘기거나 트리 범위 밖이라면 돌아간다.
+    if sum_kcal > max_kcal:
+        return
 
-        # 최대 칼로리에 도달하지 못했다면
-        max_taste += food[k][0]
-        sum_kcal += food[k][1]
-        burger(k+1, n, sum_kcal)
+    if k == N:
+        # 최대 칼로리랑 현재 누적 칼로리 비교
+        if max_taste < sum_kcal:
+            max_taste = sum_kcal
+        return
+
+    # 최대 칼로리에 도달하지 못했다면
+    burger(k + 1, sum_taste + food[k][0], sum_kcal + food[k][1])
+    burger(k + 1, sum_taste, sum_kcal)
+
 
 
 
@@ -36,12 +38,15 @@ for test_case in range(1, T + 1):
     #     food_taste_lst.append(food_taste)
     #     food_cal_lst.append(food_cal)
 
-    food = [list(map(int, input().split()))for _ in range(N)]
-    # [[100, 200], [300, 500], [250, 300], [500, 1000], [400, 400]]
+    food = [list(map(int, input().split())) for _ in range(N)]
+    # [[100, 200],[500, 1000], [400, 400]]
 
+    # visited = [0] * N   #[0, 0, 0]
     max_taste = 0
 
-    burger(0, N, 0, max_kcal)
+    burger(0, 0, 0)
+
+    print(f'#{test_case} {max_taste}')
 
 '''
 food 리스트에서 각 요소의 1번째 자리에 위치한 것들을 부분집합으로 만들고
