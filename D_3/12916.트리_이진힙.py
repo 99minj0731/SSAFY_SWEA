@@ -1,6 +1,9 @@
 import sys
 sys.stdin = open('input.txt')
 
+
+# 내가 한거 
+
 T = int(input())
 
 # 상위루트가 제일 작은 값이 되도록 만드는 함수
@@ -40,3 +43,38 @@ for test_case in range(1, T + 1):
     print(f'#{test_case} {parent_sum}')
 
 
+
+# 교수님 코드
+
+T = int(input())
+
+for test_case in range(1, T + 1):
+    N = int(input()) # 노드의 개수
+    arr = list(map(int, input().split()))  #[7, 3, 5, 2, 4, 6]
+
+    tree = [0] * (N + 1)  #[0, 0, 0, 0, 0, 0, 0]
+
+    number = 0
+
+    for num in arr:
+        number += 1
+        tree[number] = num
+
+        child = number
+        parent = number // 2
+
+        while parent != 0 and tree[child] < tree[parent]:
+            tree[child], tree[parent] = tree[parent], tree[child]
+            # 그 위에도 계속 확인
+            child = parent
+            parent = child // 2
+
+    # print(tree)  #[0, 2, 3, 5, 7, 4, 6]
+
+    # 부모 노드의 합 구하기
+    ans = 0
+    while N > 0:
+        N = N // 2
+        ans += tree[N]
+
+    print(f'#{test_case} {ans}')
