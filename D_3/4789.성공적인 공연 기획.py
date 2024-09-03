@@ -4,7 +4,7 @@ sys.stdin = open('input.txt')
 T = int(input())
 
 for test_case in range(1, T + 1):
-    arr = input()  #09
+    arr = input()  #09 110011
 
     # 처음부터 박수치고 있는 사람의 수
     clap = int(arr[0])
