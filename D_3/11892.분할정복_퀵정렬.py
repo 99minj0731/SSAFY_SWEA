@@ -35,4 +35,4 @@ for test_case in range(1,  T + 1):
 
     quick_sort(0, N -1)  # 0, 4
 
-    print(arr)
+    print(f'#{test_case} {arr[N//2]}')
