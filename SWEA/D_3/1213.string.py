@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", encoding = "UTF8")
+sys.stdin = open("input.txt", encoding ="UTF8")
 
 
 for test_case in range(10):
