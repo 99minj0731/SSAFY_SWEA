@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('../input.txt')
+sys.stdin = open('../../SWEA/D_4/input.txt')
 
 
 def food(row, col): #

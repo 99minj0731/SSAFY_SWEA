@@ -1,4 +1,4 @@
-import sys; sys.stdin = open('../../SW_역량테스트/input.txt')
+import sys; sys.stdin = open('../input.txt')
 
 def fitness(month, sum_cost): #month:시작 달, sum_cost:시작 달 전까지의 금액
     global min_cost, visited

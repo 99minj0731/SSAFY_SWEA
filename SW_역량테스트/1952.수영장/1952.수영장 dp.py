@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('../../SW_역량테스트/input.txt')
+sys.stdin = open('../input.txt')
 
 T = int(input())
 

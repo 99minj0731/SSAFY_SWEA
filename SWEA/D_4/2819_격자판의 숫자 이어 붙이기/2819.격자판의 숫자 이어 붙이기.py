@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('../input.txt')
 
 # cnt = 이동한 횟수, lst = 이동하면서 7자리 만들기
 def seven(row, col, cnt, lst):
