@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('../input.txt')
 
 def burger(k, sum_taste, sum_kcal):
     global ans

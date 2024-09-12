@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt', 'r')
+sys.stdin = open('../input.txt', 'r')
 
 def calculator(numbers):       #함수를 만들고
     S = [0] * len(numbers)     # 이것은 스택인데 연산코드의 길이만큼으로 만들어 줬다

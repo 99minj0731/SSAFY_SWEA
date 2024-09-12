@@ -1,4 +1,5 @@
-3
-oxoxoxoxoxoxoxo
-x
-xxxxxxxxxxxx
+4
+10055
+54321
+142857
+10000

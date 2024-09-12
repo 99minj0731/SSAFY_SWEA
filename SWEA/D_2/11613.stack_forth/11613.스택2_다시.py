@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt', 'r')
+sys.stdin = open('../input.txt', 'r')
 
 def calcul(numbers):
     stack = [0] * len(numbers)  #빈 스택을 만들고
