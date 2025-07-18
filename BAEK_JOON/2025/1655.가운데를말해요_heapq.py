@@ -1,6 +1,7 @@
 import sys
 import heapq
-sys.stdin = open('input.txt')
+# sys.stdin = open('input.txt')
+input = sys.stdin.readline
 
 '''
 파이썬은 heapq 최소 힙만 제공하기 때문에 최대 힙을 구하려면 음수로 저장을 해야함. 
