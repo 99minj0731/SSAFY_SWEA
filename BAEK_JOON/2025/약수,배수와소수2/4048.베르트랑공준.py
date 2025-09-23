@@ -14,12 +14,49 @@
 
 출력
 각 테스트 케이스에 대해서, n보다 크고, 2n보다 작거나 같은 소수의 개수를 출력한다.
+1 ≤ n ≤ 123,456
+
 '''
 
 import sys
 sys.stdin = open('input.txt')
 
 import math
+
+MAX = 123456 * 2
+is_prime = [True] * (MAX + 1) # 일단 모두 다 true라고 가정
+is_prime[0] = is_prime[1] = False # 0, 1은 소수가 아님
+
+
+# 소수 반별하기 
+for i in range(2, int(math.sqrt(MAX)) + 1):
+    if is_prime[i]: # 검사 시작
+        for j in range(i * i, MAX + 1, i):
+            is_prime[j] = False
+
+
+def prime_number(num):
+
+    # 만약 1이라면 무조건 1력
+    if num == 1: 
+        return 1
+    
+    result = 0
+    for i in range(num+1, 2 * num + 1): # 2, 3, 4까지 탐색
+        if is_prime[i]:
+            result += 1
+    
+    return result
+
+while True:
+    N = int(input())
+
+    if N == 0 :
+        break
+
+    print(prime_number(N))
+
+'''
 def prime_number(num):
 
     # 만약 1이라면 무조건 1력
@@ -49,3 +86,4 @@ while is_zero:
         break
 
     print(prime_number(N))
+'''
