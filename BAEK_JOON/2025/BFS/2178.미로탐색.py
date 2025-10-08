@@ -13,33 +13,30 @@
 import sys
 from collections import deque
 
-sys.stdin = open('input.txt')
+#sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
 miro = [list(input().strip()) for _ in range(N)]
 
-# 좌하우상 탐색
-dx = [0, 1, 0, -1]
-dy = [-1, 0, 1, 0]
+# 상우하좌 탐색
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
 
-cnt = 0
-visited = set()
-visited.add((0, 0))
-q = deque()
+def bfs(x, y):
+    q = deque()
+    q.append((x, y))
 
-def dfs(x, y, cnt):
-    for k in range(4):
-        nx, ny = x+dx[k], y+dy[k]
-        if N - 1 >= nx >= 0 and M - 1 >= ny >= 0:
-            if miro[nx][ny] == "1" and (nx, ny) not in visited: # 갈 수 있는 길이고 갔던 길이 아니라면
-                miro[nx][ny] = cnt + 1
-                visited.add((nx, ny)) # 갔다고 표시
+    while q:
+        x, y = q.popleft()
+        for i in range(4):
+            nx, ny = x + dx[i], y + dy[i] # 탐색할 자리
+            
+            if 0 <= nx < N and 0 <= ny < M: # x의 범위는 0부터 N-1까지, y의 범위는 0부터 M-1까지
+                if miro[nx][ny] == "1":
+                    # 해당 자리를 + 1한다. 
+                    miro[nx][ny] = str(int(miro[x][y]) + 1)
+                    q.append((nx, ny))
 
-result = 0
-for i in range(N):
-    for j in range(M):
-        if miro[i][j] == "1":
-            dfs(i, j, 0)
-
-print(miro[N - 1][M - 1])
+bfs(0, 0)
+print(miro[N-1][M-1])
